@@ -1,7 +1,7 @@
 {
   "name": "devim/rpc-server-bundle",
   "description": "Third-party bundle provide annotation which define rpc endpoints",
-  "type": "bundle",
+  "type": "symfony-bundle",
   "require": {
     "symfony/framework-bundle": "^4.0",
     "doctrine/annotations": "^1.6"
@@ -17,5 +17,10 @@
       "email": "sergey.cherkasov@devim.team"
     }
   ],
-  "minimum-stability": "stable"
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Devim\\RpcServerBundle\\": ""
+    }
+  },
 }
