@@ -1,0 +1,21 @@
+{
+  "name": "devim/rpc-server-bundle",
+  "description": "Third-party bundle provide annotation which define rpc endpoints",
+  "type": "bundle",
+  "require": {
+    "symfony/framework-bundle": "^4.0",
+    "doctrine/annotations": "^1.6"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergey Cherkesov",
+      "email": "go.for.broke1006@gmail.com"
+    },
+    {
+      "name": "sergey.cherkesov",
+      "email": "sergey.cherkasov@devim.team"
+    }
+  ],
+  "minimum-stability": "stable"
+}

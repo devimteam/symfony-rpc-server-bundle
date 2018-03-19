@@ -1,0 +1,12 @@
+services:
+
+  Devim\RpcServerBundle\Controller\GatewayController:
+    autowire: true
+    tags: ['controller.service_arguments']
+
+  Devim\RpcServerBundle\JsonRpcDiscovery:
+    arguments:
+      - "@annotation_reader"
+      - ~
+    public: true
+    autowire: true
