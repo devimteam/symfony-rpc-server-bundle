@@ -35,14 +35,19 @@ class GatewayController implements ContainerAwareInterface
         list($classRefl, $methodRefl) = $this->jsonRpcDiscovery->resolve($content);
         $controller = $this->container->get($classRefl->getName());
 
-        $response = $methodRefl->invokeArgs($controller, json_decode($content, true)['params']);
+        $parametersData = json_decode($content, true)['params'];
+        $resultInputParams = [];
+
+        foreach ($methodRefl->getParameters() as $parameter) {
+            $resultInputParams[] = isset($parametersData[$parameter->getName()])
+                ? $parametersData[$parameter->getName()] : null;
+        }
+        $response = $methodRefl->invokeArgs($controller, $resultInputParams);
 
         if (is_array($response)) {
             $response = new JsonResponse($response);
         }
 
         return $response;
-
-//        return new Response(null !== $this->jsonRpcDiscovery ? 'Hello!' : 'Zhopa!');
     }
 }
