@@ -28,7 +28,12 @@ class GatewayController implements ContainerAwareInterface
 
     public function options()
     {
-        return true;
+        $response = new Response(null, 204);
+        $response->headers->set('Access-Control-Allow-Headers', 'authorization,content-type,x-device-id');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST,POST');
+//        $response->headers->set('Access-Control-Allow-Origin', 'https://dzp-test.devim.team');
+        $response->headers->set('Access-Control-Max-Age', '15');
+        return $response;
     }
 
     public function handler(Request $request)
