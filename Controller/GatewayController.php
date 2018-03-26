@@ -26,9 +26,9 @@ class GatewayController implements ContainerAwareInterface
         $this->jsonRpcDiscovery = $jsonRpcDiscovery;
     }
 
-    public function options(Request $request)
+    public function options()
     {
-        return new Response();
+        return true;
     }
 
     public function handler(Request $request)
