@@ -1,5 +1,10 @@
 
+devim_rpc_server__gateway__options:
+  path: /
+  controller: Devim\RpcServerBundle\Controller\GatewayController::options
+  methods: OPTIONS
+
 devim_rpc_server__gateway__handler:
   path: /
   controller: Devim\RpcServerBundle\Controller\GatewayController::handler
-  methods: [POST, OPTIONS]
+  methods: POST
