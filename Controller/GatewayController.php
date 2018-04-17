@@ -50,8 +50,13 @@ class GatewayController implements ContainerAwareInterface
             $resultInputParams = [];
 
             foreach ($methodRefl->getParameters() as $parameter) {
-                $resultInputParams[] = isset($parametersData[$parameter->getName()])
-                    ? $parametersData[$parameter->getName()] : null;
+                if ('request' == $parameter->getName()) {
+                    $resultInputParams[] = $request;
+                } else {
+                    $resultInputParams[] = isset($parametersData[$parameter->getName()])
+                        ? $parametersData[$parameter->getName()]
+                        : null;
+                }
             }
             $response = $methodRefl->invokeArgs($controller, $resultInputParams);
 
@@ -72,6 +77,7 @@ class GatewayController implements ContainerAwareInterface
                 'error' => [
                     'code' => -32601,
                     'message' => $exception->getMessage(),
+                    'target' => $exception->getFile() . ':' . $exception->getLine(),
                 ],
                 'id' => rand(0, 100)
             ]);

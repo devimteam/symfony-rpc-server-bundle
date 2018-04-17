@@ -7,4 +7,4 @@ devim_rpc_server__gateway__options:
 devim_rpc_server__gateway__handler:
   path: /
   controller: Devim\RpcServerBundle\Controller\GatewayController::handler
-  methods: POST
+#  methods: POST
